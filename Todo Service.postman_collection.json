@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "e9db7f1b-8acc-412d-b48c-5a89226995dc",
+		"name": "Todo Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "8e672dac-cdd0-4958-8f07-2ac03e594d69",
+			"name": "Get Task List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{API_URL}}",
+					"host": [
+						"{{API_URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "2ac67a91-11ab-46df-a171-684e3b598b27",
+			"name": "Create Todo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8375da92-059a-4302-9a20-07597211fba5",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Create Task\", function () {",
+							"    var _id = pm.response.json()._id;",
+							"    pm.environment.set(\"TASK_ID\", _id);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"value\": \"Walk dog\"\n}"
+				},
+				"url": {
+					"raw": "{{API_URL}}",
+					"host": [
+						"{{API_URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "481f52b5-be67-47c6-b75d-cfa04afbb2fa",
+			"name": "Update Todo",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"value\": \"Eat dog\",\n\t\"isCompleted\": true\n}"
+				},
+				"url": {
+					"raw": "{{API_URL}}/{{TASK_ID}}",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"{{TASK_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "8f9cdbe0-9bab-4331-ae4b-ba6102950546",
+			"name": "Delete Todo",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{API_URL}}/{{TASK_ID}}",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"{{TASK_ID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

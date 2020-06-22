@@ -1,0 +1,24 @@
+---
+  - nodejs-extensions:
+    - .js
+  
+    template-extensions:
+    - .new
+    - .hbs
+    - ''
+  
+    ignore-filenames:
+    - skip.js
+  
+    ignore-paths:
+    - __MACOSX
+    - skip_dir
+    - node_modules
+    - build
+    - .git
+  
+    ignore-extensions:
+    - .jsx
+  
+    # ignore-rules:
+    # - node_nosqli_injection
