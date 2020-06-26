@@ -55,7 +55,4 @@ describe('user modules', () => {
     expect(user.isRemoved).toBe(true);
   });
   
-  afterAll(() => {
-    app.close();
-  });
 });

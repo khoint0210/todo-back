@@ -12,7 +12,7 @@ mongoose.set('useUnifiedTopology', true);
 mongoose.connect(constants.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
 mongoose.connection
-  .once('open', () => (process.env.ENV === "test") ? console.log('      MongoDB Running 🍻') : "")
+  .once('open', () => (process.env.NODE_ENV !== 'test') ? console.log('      MongoDB Running 🍻') : "")
   .on('error', e => {
     throw e;
   });

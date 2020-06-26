@@ -119,7 +119,4 @@ describe('user modules', () => {
     expect(task.isRemoved).toBe(true);
   });
 
-  afterAll(() => {
-    app.close();
-  });
 });

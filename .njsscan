@@ -9,6 +9,8 @@
   
     ignore-filenames:
     - skip.js
+    - user.test.js
+    - task.test.js
   
     ignore-paths:
     - __MACOSX
@@ -20,5 +22,5 @@
     ignore-extensions:
     - .jsx
   
-    # ignore-rules:
-    # - node_nosqli_injection
+    ignore-rules:
+    - node_nosqli_injection

@@ -12,12 +12,9 @@ const localStrategy = new LocalStrategy(
   async (username, password, done) => {
     try {
       const user = await User.findOne({ username, isRemoved: false });
-      if (!user) {
+      if (!user || !user.validatePassword(password)) {
         return done(null, false);
-      } else if (!user.validatePassword(password)) {
-        return done(null, false);
-      }
-
+      } 
       return done(null, user);
     } catch (e) {
       return done(e, false);
