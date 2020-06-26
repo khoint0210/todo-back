@@ -32,8 +32,8 @@ const UsersSchema = new Schema({
     default: false,
   },
 }, {
-    timestamps: true,
-  });
+  timestamps: true,
+});
 
 UsersSchema.pre('save', function (next) {
   if (this.isModified('password')) {
@@ -56,6 +56,7 @@ UsersSchema.methods = {
         _id: this._id,
       },
       constants.JWT_SECRET,
+      { expiresIn: '1d' }
     );
   },
   toJSON() {
@@ -72,7 +73,7 @@ UsersSchema.methods = {
   toAuthJSON() {
     return {
       ...this.toJSON(),
-      token: `JWT ${this.generateJWT()}` ,
+      token: `JWT ${this.generateJWT()}`,
     };
   },
 
