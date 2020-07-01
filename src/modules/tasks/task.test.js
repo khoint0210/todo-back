@@ -37,7 +37,7 @@ const demoTask1Update = {
 };
 
 const demoTask2 = {
-  value: 'hello todo test 1',
+  value: 'hello todo test 2',
 };
 
 let token1, token2, task1ID;
@@ -90,6 +90,7 @@ describe('user modules', () => {
     const response = await request(app).get(`/task/`).set('Authorization', token1);
     expect(response.statusCode).toBe(200);
     expect(response.body.total).toEqual(1);
+    expect(response.body.tasks[0].value).toEqual(demoTask1.value);
     task1ID = response.body.tasks[0]._id
   });
 
