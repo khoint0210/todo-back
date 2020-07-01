@@ -1,5 +1,5 @@
 # Todo Backend
-> RESTful API for Todo app using Express and MongoDB. https://innoteq-todo.herokuapp.com/
+> RESTful API for Todo app using Express and MongoDB.
 
 ## Installation
 * Install [MongoDB](https://www.mongodb.com/download-center#community), start mongod service.
@@ -12,10 +12,13 @@
 
 ## Endpoints
 The app include 4 endpoint for CRUD tasks of todo app.
-
-* `GET /` - Get all tasks.
-* `POST /` - Create new task.
-* `PATCH /:id` - Update a task.
-* `DELETE /:id` - Delete a task.
+* `POST /user/register` - Create new user.
+* `POST /user/login` - Login.
+* `GET /user` - Get user information.
+* `DELETE /user/:id` - Delete a user.
+* `GET /task` - Get all tasks.
+* `POST /task` - Create new task.
+* `PATCH /task/:id` - Update a task.
+* `DELETE /task/:id` - Delete a task.
 
 More detail about `body` or `result` of API you can directly try using Postman.
