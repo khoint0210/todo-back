@@ -1,0 +1,42 @@
+image: node:10
+
+cache:
+  paths:
+  - node_modules/
+
+stages:
+  - test
+  - quality
+
+test:
+  services:
+  - mongodb:latest
+  stage: test
+  script: 
+    - npm install
+    - npm test
+  tags: [shared]
+
+quality:
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+  stage: quality
+  script:
+    - sonar-scanner -Dsonar.qualitygate.wait=true -Dsonar.projectKey=todo_back -Dsonar.sources=. -Dsonar.host.url=http://192.168.137.32 -Dsonar.login=b81a60f580117a516fa361de7f7b1f856b8e02e3
+  allow_failure: true
+  only:
+    - master
+  tags: [shared]
+
+# deploy:
+#   stage: deploy
+#   script:
+#     - apt-get update -qq && apt-get install -y -qq sshpass
+#     - sshpass -V
+#     - export SSHPASS=$USER_PASS
+#     - script -qc "sshpass -e ssh -o StrictHostKeyChecking=no root@$HOST 'cd $PROJECT_PATH && ls && bash $PROJECT_PATH/script/autorun.sh'"
+#   only:
+#     - master
+#   tags: [shared]
+
+
