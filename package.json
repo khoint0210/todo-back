@@ -23,7 +23,7 @@
     "axios": "^0.18.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "bcrypt": "^3.0.4",
+    "bcrypt": "^5.0.0",
     "bcrypt-nodejs": "^0.0.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
